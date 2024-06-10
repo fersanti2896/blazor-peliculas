@@ -3,11 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPeliculas.Server", "BPeliculas\Server\BPeliculas.Server.csproj", "{7EB6437F-0C49-4AF5-BE43-1CEB123E4911}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BPeliculas.Server", "BPeliculas\Server\BPeliculas.Server.csproj", "{7EB6437F-0C49-4AF5-BE43-1CEB123E4911}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPeliculas.Client", "BPeliculas\Client\BPeliculas.Client.csproj", "{5B80EEF1-FA5A-4B9F-8886-767055F70AEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BPeliculas.Client", "BPeliculas\Client\BPeliculas.Client.csproj", "{5B80EEF1-FA5A-4B9F-8886-767055F70AEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BPeliculas.Shared", "BPeliculas\Shared\BPeliculas.Shared.csproj", "{B7678C93-9360-4E3A-97BC-E189A911E108}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BPeliculas.Shared", "BPeliculas\Shared\BPeliculas.Shared.csproj", "{B7678C93-9360-4E3A-97BC-E189A911E108}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{616CDFCD-1CA7-4E86-9A81-76094879F22E}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
