@@ -1,0 +1,22 @@
+﻿<h3>Listado de Películas</h3>
+
+@code {
+    [Parameter]
+    [EditorRequired]
+    public List<Pelicula> Peliculas { get; set; }   
+}
+
+<div>
+    @if (Peliculas is null) {
+        <p>Cargando las películas.</p>
+    } 
+    else if(Peliculas.Count == 0)
+    {
+        <p>No hay peliculas para mostrar.</p>
+    }
+    else {
+        @foreach (var pelicula in Peliculas) {
+            <IndividualMovie pelicula="pelicula" />
+        }
+    }
+</div>

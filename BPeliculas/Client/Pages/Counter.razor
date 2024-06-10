@@ -2,17 +2,19 @@
 
 <PageTitle>Counter</PageTitle>
 
-<h1>Counter</h1>
-
-<p role="status">Current count: @currentCount</p>
-
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-
 @code {
-    private int currentCount = 0;
-
-    private void IncrementCount()
+    List<Pelicula> ListadoPeliculas()
     {
-        currentCount++;
+        return new List<Pelicula>()
+        {
+            new Pelicula { Titulo = "Planeta de los Simios 1", FechaLanzamiento = new DateTime(1969, 10, 11) },
+            new Pelicula { Titulo = "Planeta de los Simios 2", FechaLanzamiento = new DateTime(1971, 10, 11) },
+            new Pelicula { Titulo = "Planeta de los Simios 3", FechaLanzamiento = new DateTime(1974, 10, 11) }
+        };
     }
 }
+
+<div>
+    <h2>Películas</h2>
+    <ListMovies Peliculas="ListadoPeliculas()" />
+</div>
