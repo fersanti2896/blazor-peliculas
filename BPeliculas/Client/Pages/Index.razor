@@ -1,0 +1,57 @@
+﻿@page "/"
+
+@code {
+    string nombre = "Fernando Santiago";
+
+    Pelicula IroMan { get { return ObtenerPelicula(); } }
+    List<Pelicula> Peliculas { get; set; }
+
+    protected override async Task OnInitializedAsync() {
+        await Task.Delay(3000);
+        Peliculas = ListadoPeliculas();
+    }
+
+    Pelicula ObtenerPelicula() { 
+        return new Pelicula { 
+            Titulo = "Iro Man",
+            FechaLanzamiento = new DateTime(2022, 11, 11)
+        };
+    }
+
+    List<Pelicula> ListadoPeliculas()
+    {
+        return new List<Pelicula>()
+        {
+            new Pelicula { Titulo = "Volver al Futuro 1", FechaLanzamiento = new DateTime(1980, 10, 11) },
+            new Pelicula { Titulo = "Volver al Futuro 2", FechaLanzamiento = new DateTime(1986, 10, 11) },
+            new Pelicula { Titulo = "Volver al Futuro 3", FechaLanzamiento = new DateTime(1990, 10, 11) }
+        }; 
+    }
+}
+
+<p>Hola, @nombre</p>
+
+<div>
+    <h3>Pelicula</h3>
+    <p>Titulo: <b>@IroMan.Titulo</b></p>
+    <p>Fecha de Lanzamiento: <b>@IroMan.FechaLanzamiento.ToString("dd MMM yyyy")</b></p>
+</div>
+
+<div>
+    @if (Peliculas is null) {
+        <p>Cargando las películas.</p>
+    } 
+    else if(Peliculas.Count == 0)
+    {
+        <p>No hay peliculas para mostrar.</p>
+    }
+    else {
+        @foreach (var pelicula in Peliculas) {
+            <div>
+                <p>Titulo: <b>@pelicula.Titulo</b></p>
+                <p>Fecha de Lanzamiento: <b>@pelicula.FechaLanzamiento.ToString("dd MMM yyyy")</b></p>
+            </div>
+        }
+    }
+    
+</div>
