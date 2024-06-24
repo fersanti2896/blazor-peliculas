@@ -1,20 +1,14 @@
 ﻿@page "/counter"
 
-<PageTitle>Counter</PageTitle>
-
-@code {
-    List<Pelicula> ListadoPeliculas()
-    {
-        return new List<Pelicula>()
-        {
-            new Pelicula { Titulo = "Planeta de los Simios 1", FechaLanzamiento = new DateTime(1969, 10, 11) },
-            new Pelicula { Titulo = "Planeta de los Simios 2", FechaLanzamiento = new DateTime(1971, 10, 11) },
-            new Pelicula { Titulo = "Planeta de los Simios 3", FechaLanzamiento = new DateTime(1974, 10, 11) }
-        };
-    }
-}
+<PageTitle>Contador</PageTitle>
 
 <div>
     <h2>Películas</h2>
     <ListMovies Peliculas="ListadoPeliculas()" />
 </div>
+
+<p>Contador @currentCount</p>
+<p>Contador Singleton @singleton.Valor</p>
+<p>Contador Transient @transient.Valor</p>
+<button class="btn btn-success" @onclick="incrementCount">Sumar</button>
+<button class="btn btn-success" @onclick="testInstanceJS">JavaScript</button>

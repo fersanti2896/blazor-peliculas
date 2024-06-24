@@ -1,22 +1,46 @@
 ﻿<h3>Listado de Películas</h3>
+@inject IJSRuntime js
 
 @code {
     [Parameter]
     [EditorRequired]
-    public List<Pelicula> Peliculas { get; set; }   
+    public List<Pelicula>? Peliculas { get; set; }
+
+    bool isVisibleButtons = false;
+
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } = null;
+
+    private async Task deleteMovie(Pelicula pelicula) {
+        var confirm = await js.Confirm($"¿Desea borrar la película: {pelicula.Titulo}?");
+
+        if(confirm) {
+            Console.WriteLine("Eliminando una pelicula");
+            Peliculas!.Remove(pelicula);
+        }    
+    }
 }
 
 <div>
     @if (Peliculas is null) {
-        <p>Cargando las películas.</p>
+        @ChildContent
     } 
     else if(Peliculas.Count == 0)
     {
         <p>No hay peliculas para mostrar.</p>
     }
     else {
-        @foreach (var pelicula in Peliculas) {
-            <IndividualMovie pelicula="pelicula" />
-        }
+        <input type="checkbox" @bind="isVisibleButtons"/> 
+        <span> Mostrar Botones</span>
+
+        @* @foreach (var pelicula in Peliculas) {
+            <IndividualMovie pelicula="pelicula" isVisibleButtons="isVisibleButtons" deleteMovie="deleteMovie" />
+        } *@
+
+        <ListGeneric Listado="Peliculas">
+            <HayRegistros>
+                <IndividualMovie pelicula="context" isVisibleButtons="isVisibleButtons" deleteMovie="deleteMovie" />
+            </HayRegistros>
+        </ListGeneric>
     }
 </div>

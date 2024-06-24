@@ -1,0 +1,42 @@
+﻿@typeparam Titem
+
+<h3>ListGeneric</h3>
+
+@code {
+    [Parameter]
+    public RenderFragment Cargando { get; set; }
+
+    [Parameter]
+    public RenderFragment NoHayRegistros { get; set; } = null!;
+
+    [Parameter]
+    public RenderFragment<Titem> HayRegistros { get; set; } = null!;
+
+    [Parameter]
+    [EditorRequired]
+    public List<Titem> Listado { get; set; } = null;
+}
+
+<div>
+    @if (Listado is null)
+    {
+        @Cargando
+    }
+    else if (Listado.Count == 0)
+    {
+        if(NoHayRegistros is null)
+        {
+            <p>No hay elementos para mostrar</p>
+        } else
+        {
+            @NoHayRegistros
+        }
+    } else
+    {
+        @foreach (var item in Listado)
+        {
+            @HayRegistros(item)
+        }
+    }
+
+</div>

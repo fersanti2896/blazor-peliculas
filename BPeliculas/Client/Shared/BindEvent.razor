@@ -1,0 +1,12 @@
+﻿<h3>Evento Bind</h3>
+
+
+<p>
+    <input @bind="valor" @bind:event="oninput" />
+</p>
+
+El valor es: @valor
+
+@code {
+    private string? valor { get; set; }
+}

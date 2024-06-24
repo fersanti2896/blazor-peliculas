@@ -3,9 +3,23 @@
     [Parameter]
     [EditorRequired]
     public Pelicula pelicula { get; set; } = null!;
+
+    [Parameter]
+    public bool isVisibleButtons { get; set; } = false;
+
+    [Parameter]
+    public EventCallback<Pelicula> deleteMovie { get; set; }
 }
 
 <div>
     <p>Titulo: <b>@pelicula.Titulo</b></p>
     <p>Fecha de Lanzamiento: <b>@pelicula.FechaLanzamiento.ToString("dd MMM yyyy")</b></p>
+
+    @if (isVisibleButtons)
+    {
+        <div>
+            <button @onclick="@(() => deleteMovie.InvokeAsync(pelicula))">Eliminar</button>
+        </div>
+    }
+    
 </div>
